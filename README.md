@@ -1,7 +1,8 @@
 # docker-confluence-mysql-server
-Atlassian Confluence Server with MySQL JDBC drivers
+Atlassian Confluence Server with the latest MySQL JDBC drivers
 
-Example docker-compose script
+
+**Example docker-compose script**
 
 ```
 version: '3.5'
