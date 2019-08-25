@@ -3,11 +3,11 @@ This dockerfile uses autobuild and gets recreated once the main docker image fro
 
 **Sources used for this build**
 
-| Package name  | Link |
-| ------------- | ------------- |
-| **MySQL** (mysql/mysql-server:5.7)  | [Docker Hub](https://hub.docker.com/r/mysql/mysql-server)  |
-| **Atlassian Confluence Server** (atlassian/confluence-server)  | [Docker Hub](https://hub.docker.com/r/atlassian/confluence-server/)  |
-| **MySQL JDBC drivers** (5.1.48)  | [MySQL.com](https://dev.mysql.com/downloads/connector/j/5.1.html)  |
+| Package name  | Version | Link |
+| ------------- | ------------- | ------------- |
+| **MySQL server** (mysql/mysql-server) | 5.7 | [Docker Hub](https://hub.docker.com/r/mysql/mysql-server)  |
+| **Atlassian Confluence Server** (atlassian/confluence-server) | latest | [Docker Hub](https://hub.docker.com/r/atlassian/confluence-server/)  |
+| **MySQL JDBC drivers** | 5.1.48 | [MySQL.com](https://dev.mysql.com/downloads/connector/j/5.1.html)  |
 
 
 **Example docker-compose.yml script**
