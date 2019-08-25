@@ -70,9 +70,9 @@ If you want to use Confluence behind an NGINX proxy, please use the following do
 
 **Steps during the installation**
 
-Please enter the following JDBC string during setting up the MySQL connection instead of the "Simple configuration", to avoid the error message down below:
+Please enter the following JDBC string during setting up the MySQL connection instead of the "Simple configuration", to avoid the error message down below. This will allow us to use a SSL connection between webserver and database but hides the annoying messages:
 ```
-jdbc:mysql://confl-mysql:3306/confluence?verifyServerCertificate=false&useSSL=false
+jdbc:mysql://confl-mysql:3306/confluence?verifyServerCertificate=false&useSSL=true
 ```
 
 **WARNING Message (flooding):** SSL connection warning in the catalina logs, between Atlassian (Tomcat) and MySQL:
