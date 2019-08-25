@@ -1,4 +1,4 @@
-# Docker Atlassian Confluence Server with MySQL and JDBC drivers
+## Docker Atlassian Confluence Server with MySQL and JDBC drivers
 
 ### Sources
 | Package  | Link |
@@ -68,12 +68,12 @@ If you want to use Confluence behind an NGINX proxy, please use the following co
 
 **Steps during the installation**
 
-SSL connection warning in logs between Atlassian and MySQL
-```
-WARNING: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-```
-
-Please enter the following JDBC string during setting up the MySQL connection instead of the "simple configuration", to avoid the error message above:
+Please enter the following JDBC string during setting up the MySQL connection instead of the "simple configuration", to avoid the error message down below:
 ```
 jdbc:mysql://confl-mysql:3306/confluence?verifyServerCertificate=false&useSSL=true
+```
+
+SSL connection warning in the catalina logs, between Atlassian (Tomcat) and MySQL:
+```
+WARNING: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 ```
