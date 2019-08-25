@@ -32,7 +32,41 @@ services:
       - databases
     volumes:
       - ${DATADIR}/confluence:/var/atlassian/application-data/confluence
+    environment:
+      - 'CATALINA_OPTS= -Dsynchrony.proxy.healthcheck.disabled=true'
     ports:
       - 8090:8090
       - 8091:8091
+```
+
+If you want to use Confluence behind an NGINX proxy, please use the following configuration:
+```
+  confluence:
+    image: techgeeks/confluence-mysql-server
+    container_name: confluence
+    hostname: your.hostname
+    restart: always
+    networks:
+      - frontend
+      - databases
+    volumes:
+      - ${DATADIR}/confluence:/var/atlassian/application-data/confluence
+    environment:
+      - 'CATALINA_OPTS= -Dsynchrony.proxy.healthcheck.disabled=true'
+      - CATALINA_CONNECTOR_PROXYNAME=your_proxy.url
+      - CATALINA_CONNECTOR_SCHEME=https
+      - CATALINA_CONNECTOR_SECURE=true
+      - CATALINA_CONNECTOR_PROXYPORT=443
+```
+
+
+**Steps during the installation**
+SSL connection warning in logs between Atlassian and MySQL
+```
+WARNING: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+```
+
+Please enter the following JDBC string during setting up the MySQL connection instead of the "simple configuration", to avoid the error message above:
+```
+jdbc:mysql://confl-mysql:3306/confluence?verifyServerCertificate=false&useSSL=true
 ```
