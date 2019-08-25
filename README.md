@@ -1,8 +1,14 @@
-# docker-confluence-mysql-server
-Atlassian Confluence Server with the latest MySQL JDBC drivers
+# Docker Atlassian Confluence Server with MySQL and JDBC drivers
+
+### Sources
+| Package  | Link |
+| ------------- | ------------- |
+| **MySQL** (mysql/mysql-server:5.7)  | [Docker Hub](https://hub.docker.com/r/mysql/mysql-server)  |
+| **Atlassian Confluence Server** (atlassian/confluence-server)  | [Docker Hub](https://hub.docker.com/r/atlassian/confluence-server/)  |
+| **MySQL JDBC drivers** (5.1.48)  | [MySQL.com](https://dev.mysql.com/downloads/connector/j/5.1.html)  |
 
 
-**Example docker-compose script**
+**Example docker-compose.yml script**
 
 ```
 version: '3.5'
@@ -14,7 +20,7 @@ services:
     networks:
       - databases
     volumes:
-      - ${DATADIR}/mysql:/var/lib/mysql
+      - /data/docker/mysql:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=confl
@@ -31,7 +37,7 @@ services:
       - frontend
       - databases
     volumes:
-      - ${DATADIR}/confluence:/var/atlassian/application-data/confluence
+      - /data/docker/confluence:/var/atlassian/application-data/confluence
     environment:
       - 'CATALINA_OPTS= -Dsynchrony.proxy.healthcheck.disabled=true'
     ports:
@@ -50,7 +56,7 @@ If you want to use Confluence behind an NGINX proxy, please use the following co
       - frontend
       - databases
     volumes:
-      - ${DATADIR}/confluence:/var/atlassian/application-data/confluence
+      - /data/docker/confluence:/var/atlassian/application-data/confluence
     environment:
       - 'CATALINA_OPTS= -Dsynchrony.proxy.healthcheck.disabled=true'
       - CATALINA_CONNECTOR_PROXYNAME=your_proxy.url
