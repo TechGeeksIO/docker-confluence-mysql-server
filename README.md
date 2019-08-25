@@ -1,7 +1,9 @@
 ## Docker Atlassian Confluence Server with MySQL and JDBC drivers
+This dockerfile uses autobuild and gets recreated once the main docker image from Atlassion gets any updates. The latest MySQL version, that can be used with Confluence is actually 5.7, since Atlassian is not supporting any higher version yet [(more details)](https://confluence.atlassian.com/doc/supported-platforms-207488198.html#SupportedPlatforms-Databases).
 
-### Sources
-| Package  | Link |
+**Sources used for this build**
+
+| Package name  | Link |
 | ------------- | ------------- |
 | **MySQL** (mysql/mysql-server:5.7)  | [Docker Hub](https://hub.docker.com/r/mysql/mysql-server)  |
 | **Atlassian Confluence Server** (atlassian/confluence-server)  | [Docker Hub](https://hub.docker.com/r/atlassian/confluence-server/)  |
@@ -45,7 +47,7 @@ services:
       - 8091:8091
 ```
 
-If you want to use Confluence behind an NGINX proxy, please use the following configuration:
+If you want to use Confluence behind an NGINX proxy, please use the following docker-compose configuration for confluence:
 ```
   confluence:
     image: techgeeks/confluence-mysql-server
@@ -68,12 +70,12 @@ If you want to use Confluence behind an NGINX proxy, please use the following co
 
 **Steps during the installation**
 
-Please enter the following JDBC string during setting up the MySQL connection instead of the "simple configuration", to avoid the error message down below:
+Please enter the following JDBC string during setting up the MySQL connection instead of the "Simple configuration", to avoid the error message down below:
 ```
 jdbc:mysql://confl-mysql:3306/confluence?verifyServerCertificate=false&useSSL=true
 ```
 
-SSL connection warning in the catalina logs, between Atlassian (Tomcat) and MySQL:
+**ERROR (WARNING)Message (flooding):** SSL connection warning in the catalina logs, between Atlassian (Tomcat) and MySQL:
 ```
 WARNING: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 ```
