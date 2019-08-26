@@ -40,8 +40,9 @@ services:
       - databases
     volumes:
       - /data/docker/confluence:/var/atlassian/application-data/confluence
-      - /data/docker/confluence/attachments:/var/atlassian/application-data/confluence/attachments
-      - /data/docker/confluence/backups:/var/atlassian/application-data/confluence/backups
+      # Optional (permissions must be changed on the host system)
+      #- /data/docker/confluence/attachments:/var/atlassian/application-data/confluence/attachments
+      #- /data/docker/confluence/backups:/var/atlassian/application-data/confluence/backups
     environment:
       - 'CATALINA_OPTS= -Dsynchrony.proxy.healthcheck.disabled=true'
       - JVM_MINIMUM_MEMORY=1024m
@@ -63,8 +64,9 @@ If you want to use Confluence behind an NGINX proxy, please use the following do
       - databases
     volumes:
       - /data/docker/confluence:/var/atlassian/application-data/confluence
-      - /data/docker/confluence/attachments:/var/atlassian/application-data/confluence/attachments
-      - /data/docker/confluence/backups:/var/atlassian/application-data/confluence/backups
+      # Optional (permissions must be changed on the host system)
+      #- /data/docker/confluence/attachments:/var/atlassian/application-data/confluence/attachments
+      #- /data/docker/confluence/backups:/var/atlassian/application-data/confluence/backups
     environment:
       - 'CATALINA_OPTS= -Dsynchrony.proxy.healthcheck.disabled=true'
       - JVM_MINIMUM_MEMORY=1024m
