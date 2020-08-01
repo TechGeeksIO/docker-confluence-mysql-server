@@ -1,5 +1,5 @@
 ## Docker Atlassian Confluence Server with MySQL and JDBC drivers
-This dockerfile uses autobuild and gets recreated once the main docker image from Atlassion gets any updates. The latest MySQL version, that can be used with Confluence is actually 5.7, since Atlassian is not supporting any higher version yet [(more details)](https://confluence.atlassian.com/doc/supported-platforms-207488198.html#SupportedPlatforms-Databases). 
+This dockerfile uses autobuild and gets recreated once the main docker image from Atlassion gets any updates. The latest MySQL version, that can be used with Confluence is actually 8 [(more details)](https://confluence.atlassian.com/doc/supported-platforms-207488198.html#SupportedPlatforms-Databases). 
 
 **Sources used for this build**
 
@@ -13,7 +13,7 @@ This dockerfile uses autobuild and gets recreated once the main docker image fro
 **Example docker-compose.yml script**
 
 ```
-version: '3.5'
+version: '3.7'
 services:
   confl-mysql:
     image: mysql/mysql-server:latest
