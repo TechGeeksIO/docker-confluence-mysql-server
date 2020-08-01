@@ -16,7 +16,7 @@ This dockerfile uses autobuild and gets recreated once the main docker image fro
 version: '3.5'
 services:
   confl-mysql:
-    image: mysql/mysql-server:5.7
+    image: mysql/mysql-server:latest
     container_name: confl-mysql
     restart: always
     networks:
