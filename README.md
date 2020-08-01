@@ -5,9 +5,9 @@ This dockerfile uses autobuild and gets recreated once the main docker image fro
 
 | Package name  | Version | Link |
 | ------------- | ------------- | ------------- |
-| **MySQL server** (mysql/mysql-server) | 5.7 | [Docker Hub](https://hub.docker.com/r/mysql/mysql-server)  |
+| **MySQL server** (mysql/mysql-server) | 8.latest | [Docker Hub](https://hub.docker.com/r/mysql/mysql-server)  |
 | **Atlassian Confluence Server** (atlassian/confluence-server) | latest | [Docker Hub](https://hub.docker.com/r/atlassian/confluence-server/)  |
-| **MySQL JDBC drivers** | 5.1.48 | [MySQL.com](https://dev.mysql.com/downloads/connector/j/5.1.html)  |
+| **MySQL JDBC drivers** | 8.0.21 | [MySQL.com](https://dev.mysql.com/downloads/connector/j/)  |
 
 
 **Example docker-compose.yml script**
